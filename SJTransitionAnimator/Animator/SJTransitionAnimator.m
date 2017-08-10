@@ -61,11 +61,13 @@ typedef NS_ENUM(NSUInteger, ModalViewControllerState) {
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext {
     
     switch (self.state) {
-        case ModalViewControllerStatePresented:
+        case ModalViewControllerStatePresented: {
             self.presentedAnimationBlock(transitionContext);
+        }
             break;
-        case ModalViewControllerStateDismissed:
+        case ModalViewControllerStateDismissed: {
             self.dismissedAnimationBlock(transitionContext);
+        }
             break;
         default:
             NSLog(@"default error, %s, %zd", __FILE__, __LINE__);
@@ -81,6 +83,15 @@ typedef NS_ENUM(NSUInteger, ModalViewControllerState) {
 
 // MARK: Init
 
++ (instancetype)sharedAnimator {
+    static id _instance;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _instance = [self new];
+    });
+    return _instance;
+}
+
 - (instancetype)initWithModalViewController:(UIViewController *)viewController {
     self = [self init];
     self.modalViewController = viewController;
@@ -90,6 +101,7 @@ typedef NS_ENUM(NSUInteger, ModalViewControllerState) {
 - (instancetype)init {
     self = [super init];
     if ( self ) {
+        // default is 0.5;
         _duration = 0.5;
     }
     return self;
@@ -112,22 +124,21 @@ typedef NS_ENUM(NSUInteger, ModalViewControllerState) {
 // MARK: Lazy
 
 - (AnimationBlockType)presentedAnimationBlock {
-    if (_presentedAnimationBlock == nil) {
-        __weak __typeof(self)weakSelf = self;
-        _presentedAnimationBlock = ^(id<UIViewControllerContextTransitioning>  _Nonnull transitionContext) {
-            [weakSelf defaultPresentedAnimation:transitionContext];
-        };
-    }
+    if ( _presentedAnimationBlock ) return _presentedAnimationBlock;
+    __weak typeof(self) _self = self;
+    _presentedAnimationBlock = ^(id<UIViewControllerContextTransitioning>  _Nonnull transitionContext) {
+        [_self defaultPresentedAnimation:transitionContext];
+        
+    };
     return _presentedAnimationBlock;
 }
 
 - (AnimationBlockType)dismissedAnimationBlock {
-    if (_dismissedAnimationBlock == nil) {
-        __weak __typeof(self)weakSelf = self;
-        _dismissedAnimationBlock = ^(id<UIViewControllerContextTransitioning>  _Nonnull transitionContext) {
-            [weakSelf defaultDismissedAnimation:transitionContext];
-        };
-    }
+    if ( _dismissedAnimationBlock ) return _dismissedAnimationBlock;
+    __weak typeof(self) _self = self;
+    _dismissedAnimationBlock = ^(id<UIViewControllerContextTransitioning>  _Nonnull transitionContext) {
+        [_self defaultDismissedAnimation:transitionContext];
+    };
     return _dismissedAnimationBlock;
 }
 
@@ -158,5 +169,12 @@ typedef NS_ENUM(NSUInteger, ModalViewControllerState) {
 
 #pragma mark -
 
+- (void)clearPresentedAnimationBlock {
+    _presentedAnimationBlock = nil;
+}
+
+- (void)clearDismissedAnimationBlock {
+    _dismissedAnimationBlock = nil;
+}
 
 @end

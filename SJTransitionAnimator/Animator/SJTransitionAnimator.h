@@ -15,21 +15,29 @@ typedef void(^_Nullable AnimationBlockType)(id<UIViewControllerContextTransition
 @interface SJTransitionAnimator : NSObject
 
 /*!
- *  default is 0.5;
+ *  animation default is 0.5;
  */
 @property (nonatomic, assign, readwrite) NSTimeInterval duration;
 
-/*!
- *  Modal的视图
- */
 @property (nonatomic, weak, readwrite) UIViewController *modalViewController;
+
+
++ (instancetype)sharedAnimator;
 
 - (instancetype)initWithModalViewController:(UIViewController *)viewController;
 
 /*!
  *  注意  retain count
+ *  如果没有设置将会使用默认的动画
  */
 - (void)presentedAnimation:(AnimationBlockType)pBlock dismissedAnimation:(AnimationBlockType)dBlock;
+
+/*!
+ *  重置动画block（presentedAnimation & dismissedAnimation）
+ */
+- (void)clearPresentedAnimationBlock;
+
+- (void)clearDismissedAnimationBlock;
 
 @end
 
