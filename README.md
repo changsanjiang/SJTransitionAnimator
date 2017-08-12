@@ -1,5 +1,8 @@
 # SJTransitionAnimator
 Modal自定义转场动画
+    
+<img src = "https://github.com/changsanjiang/SJTransitionAnimator/blob/master/SJTransitionAnimator/defaultAnimation.gif" width = "40%" />
+
 ```
 - (void)clickedModalBtn {
     ModalViewController *pvc = [ModalViewController new];
