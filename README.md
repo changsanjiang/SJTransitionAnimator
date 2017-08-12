@@ -5,7 +5,7 @@ Modal自定义转场动画
     ModalViewController *pvc = [ModalViewController new];
     self.animator.modalViewController = pvc;
 //    /*!
-//     *  custom your animation
+//     *  custom your animation. If not set, the default mode will be used.
 //     */
 //    [self.animator presentedAnimation:^(id<UIViewControllerContextTransitioning>  _Nonnull transitionContext) {
 //        // ...
