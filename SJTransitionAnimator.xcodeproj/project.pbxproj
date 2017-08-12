@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		778252B81F3F1767006F5156 /* defaultAnimation.gif in Resources */ = {isa = PBXBuildFile; fileRef = 778252B71F3F1767006F5156 /* defaultAnimation.gif */; };
 		77E376751F0DDCA7003B0A88 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E376741F0DDCA7003B0A88 /* main.m */; };
 		77E376781F0DDCA7003B0A88 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E376771F0DDCA7003B0A88 /* AppDelegate.m */; };
 		77E3767B1F0DDCA7003B0A88 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E3767A1F0DDCA7003B0A88 /* ViewController.m */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		778252B71F3F1767006F5156 /* defaultAnimation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = defaultAnimation.gif; sourceTree = "<group>"; };
 		77E376701F0DDCA7003B0A88 /* SJTransitionAnimator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SJTransitionAnimator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77E376741F0DDCA7003B0A88 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		77E376761F0DDCA7003B0A88 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				77E3768A1F0DDCB2003B0A88 /* ModalViewController.h */,
 				77E3768B1F0DDCB2003B0A88 /* ModalViewController.m */,
 				77E3768D1F0DDCC5003B0A88 /* Animator */,
+				778252B71F3F1767006F5156 /* defaultAnimation.gif */,
 				77E3767C1F0DDCA7003B0A88 /* Main.storyboard */,
 				77E3767F1F0DDCA7003B0A88 /* Assets.xcassets */,
 				77E376811F0DDCA7003B0A88 /* LaunchScreen.storyboard */,
@@ -156,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				77E376831F0DDCA7003B0A88 /* LaunchScreen.storyboard in Resources */,
+				778252B81F3F1767006F5156 /* defaultAnimation.gif in Resources */,
 				77E376801F0DDCA7003B0A88 /* Assets.xcassets in Resources */,
 				77E3767E1F0DDCA7003B0A88 /* Main.storyboard in Resources */,
 			);
@@ -331,6 +335,7 @@
 				77E376891F0DDCA7003B0A88 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
