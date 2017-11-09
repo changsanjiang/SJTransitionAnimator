@@ -10,7 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void(^_Nullable AnimationBlockType)(id<UIViewControllerContextTransitioning> transitionContext);
+@class SJTransitionAnimator;
+
+typedef void(^_Nullable AnimationBlockType)(SJTransitionAnimator *animator, id<UIViewControllerContextTransitioning> transitionContext);
 
 @interface SJTransitionAnimator : NSObject
 

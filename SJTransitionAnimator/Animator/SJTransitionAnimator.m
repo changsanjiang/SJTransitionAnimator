@@ -62,11 +62,11 @@ typedef NS_ENUM(NSUInteger, ModalViewControllerState) {
     
     switch (self.state) {
         case ModalViewControllerStatePresented: {
-            self.presentedAnimationBlock(transitionContext);
+            self.presentedAnimationBlock(self, transitionContext);
         }
             break;
         case ModalViewControllerStateDismissed: {
-            self.dismissedAnimationBlock(transitionContext);
+            self.dismissedAnimationBlock(self, transitionContext);
         }
             break;
         default:
@@ -125,21 +125,16 @@ typedef NS_ENUM(NSUInteger, ModalViewControllerState) {
 
 - (AnimationBlockType)presentedAnimationBlock {
     if ( _presentedAnimationBlock ) return _presentedAnimationBlock;
-    __weak typeof(self) _self = self;
-    _presentedAnimationBlock = ^(id<UIViewControllerContextTransitioning>  _Nonnull transitionContext) {
-        [_self defaultPresentedAnimation:transitionContext];
-        
+    return ^(SJTransitionAnimator * _Nonnull animator, id<UIViewControllerContextTransitioning>  _Nonnull transitionContext) {
+        [animator defaultPresentedAnimation:transitionContext];
     };
-    return _presentedAnimationBlock;
 }
 
 - (AnimationBlockType)dismissedAnimationBlock {
     if ( _dismissedAnimationBlock ) return _dismissedAnimationBlock;
-    __weak typeof(self) _self = self;
-    _dismissedAnimationBlock = ^(id<UIViewControllerContextTransitioning>  _Nonnull transitionContext) {
-        [_self defaultDismissedAnimation:transitionContext];
+    return ^(SJTransitionAnimator * _Nonnull animator, id<UIViewControllerContextTransitioning>  _Nonnull transitionContext) {
+        [animator defaultDismissedAnimation:transitionContext];
     };
-    return _dismissedAnimationBlock;
 }
 
 // MARK: 缺省动画
@@ -164,6 +159,9 @@ typedef NS_ENUM(NSUInteger, ModalViewControllerState) {
         fromView.alpha = 0.001;
     } completion:^(BOOL finished) {
         [transitionContext completeTransition:YES];
+        // clear
+        [self clearPresentedAnimationBlock];
+        [self clearDismissedAnimationBlock];
     }];
 }
 

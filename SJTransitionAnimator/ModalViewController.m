@@ -16,6 +16,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UILabel *label = [UILabel new];
+    label.font = [UIFont systemFontOfSize:20];
+    label.text = @"弹出";
+    [label sizeToFit];
+    [self.view addSubview:label];
+    label.center = CGPointMake(100, 100);
     // Do any additional setup after loading the view.
 }
 
