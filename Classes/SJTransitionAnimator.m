@@ -44,7 +44,9 @@ typedef NS_ENUM(NSUInteger, ModalViewControllerState) {
     switch (self.state) {
         case ModalViewControllerStatePresented: {
             if ( self.presentedAnimBlock ) {
+                UIView *containerView = [transitionContext containerView];
                 UIView *toView = [transitionContext viewForKey:UITransitionContextToViewKey];
+                [containerView addSubview:toView];
                 self.presentedAnimBlock(self, toView, transitionContext);
                 self.presentedAnimBlock = nil;
             }
@@ -196,3 +198,4 @@ typedef NS_ENUM(NSUInteger, ModalViewControllerState) {
 }
 
 @end
+
