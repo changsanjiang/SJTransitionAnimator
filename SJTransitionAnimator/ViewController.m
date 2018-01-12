@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "ModalViewController.h"
 #import "SJTransitionAnimator.h"
+#import "SJAnimations.h"
 
 @interface ViewController ()
 
@@ -30,6 +31,7 @@
     btn.center = self.view.center;
     [self.view addSubview:btn];
     
+
     
     [btn addTarget:self action:@selector(clickedModalBtn) forControlEvents:UIControlEventTouchUpInside];
     
@@ -47,6 +49,12 @@
 //    } dismissedAnimation:^(id<UIViewControllerContextTransitioning>  _Nonnull transitionContext) {
 //        // ...
 //    }];
+    self.animator.duration = 1.3;
+    SJAnimations *anim = [SJAnimations new];
+    [self.animator presentedAnimation:^(SJTransitionAnimator * _Nonnull animator, id<UIViewControllerContextTransitioning>  _Nonnull transitionContext) {
+        [anim centerMask:[UIImage imageNamed:@"Star"] context:transitionContext];
+        [animator clearPresentedAnimationBlock];
+    } dismissedAnimation:nil];
     [self presentViewController:pvc animated:YES completion:nil];
 }
 

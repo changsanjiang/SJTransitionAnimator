@@ -10,6 +10,8 @@
 		778252B81F3F1767006F5156 /* defaultAnimation.gif in Resources */ = {isa = PBXBuildFile; fileRef = 778252B71F3F1767006F5156 /* defaultAnimation.gif */; };
 		779A59E91FB3FCF200F88DEC /* SJTransitionAnimator.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 779A59E81FB3FCF200F88DEC /* SJTransitionAnimator.podspec */; };
 		779A59EF1FB3FDD900F88DEC /* SJTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 779A59EE1FB3FDD900F88DEC /* SJTransitionAnimator.m */; };
+		77CF495C1FE95EA500B03969 /* SJNavTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CF495B1FE95EA500B03969 /* SJNavTransitionAnimator.m */; };
+		77CF495F1FE9625500B03969 /* SJAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CF495E1FE9625500B03969 /* SJAnimations.m */; };
 		77E376751F0DDCA7003B0A88 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E376741F0DDCA7003B0A88 /* main.m */; };
 		77E376781F0DDCA7003B0A88 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E376771F0DDCA7003B0A88 /* AppDelegate.m */; };
 		77E3767B1F0DDCA7003B0A88 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E3767A1F0DDCA7003B0A88 /* ViewController.m */; };
@@ -24,6 +26,10 @@
 		779A59E81FB3FCF200F88DEC /* SJTransitionAnimator.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SJTransitionAnimator.podspec; sourceTree = "<group>"; };
 		779A59ED1FB3FDD900F88DEC /* SJTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJTransitionAnimator.h; sourceTree = "<group>"; };
 		779A59EE1FB3FDD900F88DEC /* SJTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJTransitionAnimator.m; sourceTree = "<group>"; };
+		77CF495A1FE95EA400B03969 /* SJNavTransitionAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJNavTransitionAnimator.h; sourceTree = "<group>"; };
+		77CF495B1FE95EA500B03969 /* SJNavTransitionAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SJNavTransitionAnimator.m; sourceTree = "<group>"; };
+		77CF495D1FE9625500B03969 /* SJAnimations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJAnimations.h; sourceTree = "<group>"; };
+		77CF495E1FE9625500B03969 /* SJAnimations.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SJAnimations.m; sourceTree = "<group>"; };
 		77E376701F0DDCA7003B0A88 /* SJTransitionAnimator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SJTransitionAnimator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77E376741F0DDCA7003B0A88 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		77E376761F0DDCA7003B0A88 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -52,6 +58,8 @@
 		779A59EC1FB3FDD900F88DEC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				77CF495D1FE9625500B03969 /* SJAnimations.h */,
+				77CF495E1FE9625500B03969 /* SJAnimations.m */,
 				779A59ED1FB3FDD900F88DEC /* SJTransitionAnimator.h */,
 				779A59EE1FB3FDD900F88DEC /* SJTransitionAnimator.m */,
 			);
@@ -84,6 +92,8 @@
 				77E3767A1F0DDCA7003B0A88 /* ViewController.m */,
 				77E3768A1F0DDCB2003B0A88 /* ModalViewController.h */,
 				77E3768B1F0DDCB2003B0A88 /* ModalViewController.m */,
+				77CF495A1FE95EA400B03969 /* SJNavTransitionAnimator.h */,
+				77CF495B1FE95EA500B03969 /* SJNavTransitionAnimator.m */,
 				779A59EC1FB3FDD900F88DEC /* Classes */,
 				778252B71F3F1767006F5156 /* defaultAnimation.gif */,
 				77E3767C1F0DDCA7003B0A88 /* Main.storyboard */,
@@ -179,6 +189,8 @@
 			files = (
 				779A59EF1FB3FDD900F88DEC /* SJTransitionAnimator.m in Sources */,
 				77E3768C1F0DDCB2003B0A88 /* ModalViewController.m in Sources */,
+				77CF495C1FE95EA500B03969 /* SJNavTransitionAnimator.m in Sources */,
+				77CF495F1FE9625500B03969 /* SJAnimations.m in Sources */,
 				77E3767B1F0DDCA7003B0A88 /* ViewController.m in Sources */,
 				77E376781F0DDCA7003B0A88 /* AppDelegate.m in Sources */,
 				77E376751F0DDCA7003B0A88 /* main.m in Sources */,
@@ -306,6 +318,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = DB5B5F2RH5;
 				INFOPLIST_FILE = SJTransitionAnimator/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SanJiang.SJTransitionAnimator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -321,6 +334,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SJTransitionAnimator/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SanJiang.SJTransitionAnimator;
 				PRODUCT_NAME = "$(TARGET_NAME)";

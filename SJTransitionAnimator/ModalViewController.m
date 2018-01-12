@@ -22,6 +22,9 @@
     [label sizeToFit];
     [self.view addSubview:label];
     label.center = CGPointMake(100, 100);
+    
+    
+    self.view.backgroundColor = [UIColor orangeColor];
     // Do any additional setup after loading the view.
 }
 
