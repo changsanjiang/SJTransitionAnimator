@@ -41,6 +41,12 @@ typedef void(^_Nullable AnimationBlockType)(SJTransitionAnimator *animator, id<U
          presentedAnimation:(AnimationBlockType)pBlock
          dismissedAnimation:(AnimationBlockType)dBlock;
 
+/// 淡入淡出
+- (void)fadeInAndFadeOut;
+
+/// 推进推出
+- (void)pushAndPop;
+
 - (void)clearPresentedAnimationBlock;
 
 - (void)clearDismissedAnimationBlock;

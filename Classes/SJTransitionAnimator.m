@@ -48,7 +48,6 @@ typedef NS_ENUM(NSUInteger, ModalViewControllerState) {
                 UIView *toView = [transitionContext viewForKey:UITransitionContextToViewKey];
                 [containerView addSubview:toView];
                 self.presentedAnimBlock(self, toView, transitionContext);
-                self.presentedAnimBlock = nil;
             }
             else self.presentedAnimationBlock(self, transitionContext);
         }
@@ -57,7 +56,6 @@ typedef NS_ENUM(NSUInteger, ModalViewControllerState) {
             if ( self.dismissedAnimBlock ) {
                 UIView *fromView = [transitionContext viewForKey:UITransitionContextFromViewKey];
                 self.dismissedAnimBlock(self, fromView, transitionContext);
-                self.dismissedAnimBlock = nil;
             }
             else self.dismissedAnimationBlock(self, transitionContext);
         }
@@ -145,6 +143,41 @@ typedef NS_ENUM(NSUInteger, ModalViewControllerState) {
     _modalViewController = viewController;
     _presentedAnimationBlock = pBlock;
     _dismissedAnimationBlock = dBlock;
+}
+
+- (void)fadeInAndFadeOut {
+    [self presentedAnima:^(SJTransitionAnimator * _Nonnull anim, UIView * _Nonnull presentView, id<UIViewControllerContextTransitioning>  _Nonnull transitionContext) {
+        presentView.alpha = 0.001;
+        presentView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+        [UIView animateWithDuration:anim.duration animations:^{
+            presentView.alpha = 1;
+        } completion:^(BOOL finished) {
+            [transitionContext completeTransition:YES];
+        }];
+    } dismissedAnima:^(SJTransitionAnimator * _Nonnull anim, UIView * _Nonnull presentView, id<UIViewControllerContextTransitioning>  _Nonnull transitionContext) {
+        [UIView animateWithDuration:anim.duration animations:^{
+            presentView.alpha = 0.001;
+        } completion:^(BOOL finished) {
+            [transitionContext completeTransition:YES];
+        }];
+    }];
+}
+
+- (void)pushAndPop {
+    [self presentedAnima:^(SJTransitionAnimator * _Nonnull anim, UIView * _Nonnull presentView, id<UIViewControllerContextTransitioning>  _Nonnull transitionContext) {
+        presentView.transform = CGAffineTransformMakeTranslation([UIScreen mainScreen].bounds.size.width, 0);
+        [UIView animateWithDuration:anim.duration animations:^{
+            presentView.transform = CGAffineTransformIdentity;
+        } completion:^(BOOL finished) {
+            [transitionContext completeTransition:YES];
+        }];
+    } dismissedAnima:^(SJTransitionAnimator * _Nonnull anim, UIView * _Nonnull presentView, id<UIViewControllerContextTransitioning>  _Nonnull transitionContext) {
+        [UIView animateWithDuration:anim.duration animations:^{
+            presentView.transform = CGAffineTransformMakeTranslation([UIScreen mainScreen].bounds.size.width, 0);
+        } completion:^(BOOL finished) {
+            [transitionContext completeTransition:YES];
+        }];
+    }];
 }
 
 - (AnimationBlockType)presentedAnimationBlock {
