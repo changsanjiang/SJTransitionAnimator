@@ -148,7 +148,6 @@ typedef NS_ENUM(NSUInteger, ModalViewControllerState) {
 - (void)fadeInAndFadeOut {
     [self presentedAnima:^(SJTransitionAnimator * _Nonnull anim, UIView * _Nonnull presentView, id<UIViewControllerContextTransitioning>  _Nonnull transitionContext) {
         presentView.alpha = 0.001;
-        presentView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
         [UIView animateWithDuration:anim.duration animations:^{
             presentView.alpha = 1;
         } completion:^(BOOL finished) {
